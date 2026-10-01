@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         BASIC DOCUMENT INFORMATION
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="TaskFlow is a responsive internship task portal for viewing, managing, and tracking assigned internship tasks."
+    >
+
+    <meta
+        name="author"
+        content="TaskFlow Internship Project"
+    >
+
+    <title>TaskFlow | Internship Task Portal</title>
+
+
+    <!-- =========================================
+         CSS
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         APPLICATION WRAPPER
+    ========================================== -->
+
+    <div class="app">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <header class="header">
+
+            <div class="header-container">
+
+
+                <!-- Logo -->
+
+                <a
+                    href="#"
+                    class="logo"
+                    aria-label="TaskFlow home"
+                >
+
+                    <span
+                        class="logo-icon"
+                        aria-hidden="true"
+                    >
+                        T
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>TaskFlow</strong>
+
+                        <small>
+                            Internship Portal
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <!-- User Information -->
+
+                <div class="user-profile">
+
+                    <div class="user-details">
+
+                        <span class="user-name">
+                            Intern
+                        </span>
+
+                        <span class="user-role">
+                            Internship Trainee
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="user-avatar"
+                        aria-label="Intern profile"
+                    >
+                        I
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="main-container">
+
+
+            <!-- =================================
+                 PAGE INTRODUCTION
+            ================================== -->
+
+            <section
+                class="page-intro"
+                aria-labelledby="page-title"
+            >
+
+                <div class="intro-content">
+
+                    <span class="page-label">
+                        INTERNSHIP WORKSPACE
+                    </span>
+
+                    <h1 id="page-title">
+                        Internship Tasks
+                    </h1>
+
+                    <p>
+                        View your assigned tasks, track progress,
+                        and keep your internship work organized.
+                    </p>
+
+                </div>
+
+
+                <!-- Add Task Button -->
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="openTaskFormButton"
+                >
+                    <span aria-hidden="true">+</span>
+                    Add Task
+                </button>
+
+            </section>
+
+
+
+            <!-- =================================
+                 STATISTICS
+            ================================== -->
+
+            <section
+                class="stats-grid"
+                aria-label="Task statistics"
+            >
+
+
+                <!-- Total Tasks -->
+
+                <article class="stat-card">
+
+                    <div
+                        class="stat-icon"
+                        aria-hidden="true"
+                    >
+                        📋
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span class="stat-label">
+                            Total Tasks
+                        </span>
+
+                        <strong id="totalTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Pending Tasks -->
+
+                <article class="stat-card">
+
+                    <div
+                        class="stat-icon"
+                        aria-hidden="true"
+                    >
+                        ⏳
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span class="stat-label">
+                            Pending
+                        </span>
+
+                        <strong id="pendingTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- In Progress Tasks -->
+
+                <article class="stat-card">
+
+                    <div
+                        class="stat-icon"
+                        aria-hidden="true"
+                    >
+                        🔄
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span class="stat-label">
+                            In Progress
+                        </span>
+
+                        <strong id="progressTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Completed Tasks -->
+
+                <article class="stat-card">
+
+                    <div
+                        class="stat-icon"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span class="stat-label">
+                            Completed
+                        </span>
+
+                        <strong id="completedTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 TASK MANAGEMENT SECTION
+            ================================== -->
+
+            <section
+                class="task-management"
+                aria-labelledby="tasks-heading"
+            >
+
+
+                <!-- Section Header -->
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2 id="tasks-heading">
+                            Assigned Tasks
+                        </h2>
+
+                        <p>
+                            Manage and update your current internship tasks.
+                        </p>
+
+                    </div>
+
+                    <span
+                        id="taskCount"
+                        class="task-count"
+                    >
+                        0 tasks
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================
+                     SEARCH AND FILTERS
+                ================================== -->
+
+                <div class="filter-panel">
+
+
+                    <!-- Search -->
+
+                    <div class="search-container">
+
+                        <label
+                            for="searchInput"
+                            class="visually-hidden"
+                        >
+                            Search tasks
+                        </label>
+
+                        <span
+                            class="search-icon"
+                            aria-hidden="true"
+                        >
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            name="search"
+                            placeholder="Search tasks..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <!-- Filters -->
+
+                    <div class="filter-controls">
+
+
+                        <!-- Status Filter -->
+
+                        <div class="filter-group">
+
+                            <label for="statusFilter">
+                                Status
+                            </label>
+
+                            <select
+                                id="statusFilter"
+                                name="status"
+                            >
+
+                                <option value="All">
+                                    All Statuses
+                                </option>
+
+                                <option value="Pending">
+                                    Pending
+                                </option>
+
+                                <option value="In Progress">
+                                    In Progress
+                                </option>
+
+                                <option value="Completed">
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- Priority Filter -->
+
+                        <div class="filter-group">
+
+                            <label for="priorityFilter">
+                                Priority
+                            </label>
+
+                            <select
+                                id="priorityFilter"
+                                name="priority"
+                            >
+
+                                <option value="All">
+                                    All Priorities
+                                </option>
+
+                                <option value="High">
+                                    High
+                                </option>
+
+                                <option value="Medium">
+                                    Medium
+                                </option>
+
+                                <option value="Low">
+                                    Low
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- Clear Filters -->
+
+                        <button
+                            type="button"
+                            id="clearFiltersButton"
+                            class="secondary-button"
+                        >
+                            Clear Filters
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     TASK LIST
+                ================================== -->
+
+                <div
+                    id="taskList"
+                    class="task-list"
+                    aria-live="polite"
+                >
+
+                    <!--
+                        Task cards will be generated
+                        dynamically by JavaScript.
+                    -->
+
+                </div>
+
+
+
+                <!-- =================================
+                     EMPTY STATE
+                ================================== -->
+
+                <div
+                    id="emptyState"
+                    class="empty-state hidden"
+                    aria-live="polite"
+                >
+
+                    <div
+                        class="empty-icon"
+                        aria-hidden="true"
+                    >
+                        🔍
+                    </div>
+
+                    <h3>
+                        No tasks found
+                    </h3>
+
+                    <p>
+                        No tasks match your current search
+                        or filter selection.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyStateClearButton"
+                        class="secondary-button"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 ADD TASK FORM
+            ================================== -->
+
+            <section
+                id="taskFormSection"
+                class="task-form-section hidden"
+                aria-labelledby="form-title"
+            >
+
+                <div class="form-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            TASK MANAGEMENT
+                        </span>
+
+                        <h2 id="form-title">
+                            Add New Task
+                        </h2>
+
+                        <p>
+                            Enter the task details below.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="closeTaskFormButton"
+                        class="close-button"
+                        aria-label="Close add task form"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================
+                     TASK FORM
+                ================================== -->
+
+                <form
+                    id="taskForm"
+                    novalidate
+                >
+
+
+                    <!-- Task Title -->
+
+                    <div class="form-group">
+
+                        <label for="taskTitle">
+                            Task Title
+                            <span aria-hidden="true">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="taskTitle"
+                            name="title"
+                            placeholder="e.g. Build Login Page"
+                            maxlength="100"
+                            required
+                        >
+
+                        <small
+                            id="taskTitleError"
+                            class="error-message"
+                            aria-live="polite"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Task Description -->
+
+                    <div class="form-group">
+
+                        <label for="taskDescription">
+                            Description
+                            <span aria-hidden="true">*</span>
+                        </label>
+
+                        <textarea
+                            id="taskDescription"
+                            name="description"
+                            placeholder="Describe the task..."
+                            rows="4"
+                            maxlength="500"
+                            required
+                        ></textarea>
+
+                        <small
+                            id="taskDescriptionError"
+                            class="error-message"
+                            aria-live="polite"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Priority -->
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="taskPriority">
+                                Priority
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="taskPriority"
+                                name="priority"
+                                required
+                            >
+
+                                <option value="">
+                                    Select priority
+                                </option>
+
+                                <option value="High">
+                                    High
+                                </option>
+
+                                <option value="Medium">
+                                    Medium
+                                </option>
+
+                                <option value="Low">
+                                    Low
+                                </option>
+
+                            </select>
+
+                            <small
+                                id="taskPriorityError"
+                                class="error-message"
+                                aria-live="polite"
+                            ></small>
+
+                        </div>
+
+
+
+                        <!-- Deadline -->
+
+                        <div class="form-group">
+
+                            <label for="taskDeadline">
+                                Deadline
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="taskDeadline"
+                                name="deadline"
+                                required
+                            >
+
+                            <small
+                                id="taskDeadlineError"
+                                class="error-message"
+                                aria-live="polite"
+                            ></small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- Status -->
+
+                    <div class="form-group">
+
+                        <label for="taskStatus">
+                            Status
+                            <span aria-hidden="true">*</span>
+                        </label>
+
+                        <select
+                            id="taskStatus"
+                            name="status"
+                            required
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Form Actions -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            id="cancelTaskButton"
+                            class="secondary-button"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Add Task
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =================================
+                 APPLICATION MESSAGE
+            ================================== -->
+
+            <div
+                id="appMessage"
+                class="app-message hidden"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+        </main>
+
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-container">
+
+                <p>
+                    TaskFlow Internship Portal
+                </p>
+
+                <p>
+                    Built as an internship project
+                </p>
+
+            </div>
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
+
